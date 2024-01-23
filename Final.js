@@ -1,1 +1,1 @@
-This is the End of Core JS
+const msg="This is the end of JS codes"
