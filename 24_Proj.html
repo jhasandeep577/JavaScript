@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Color Changer</title>
+    <style>
+        body{
+            margin: 0px;
+            padding: 0px;
+        }
+        #bodyy{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .headd2{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            background-color: #929292;
+        }.headd{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            margin-top: 30px;
+           
+        }
+        .tittl{
+            border-radius: 5px;
+            padding:10px 40px 10px 40px;
+            margin:10px 50px 10px 50px;
+            font-weight: bold;
+            color:white;
+            background-color: black;
+        }
+        .colo{
+            padding:50px;
+            margin:20px;
+            margin-top: 100px;
+            border: solid black 2px;
+        }
+        #grey{
+            background-color: #414141;
+        }
+        #pink{
+            background-color: pink;
+        }
+        #green{
+            background-color:lightgreen;
+        }
+        #blue{
+            background-color: lightblue;
+        }
+    </style>
+</head>
+<body>
+    <div id="bodyy">
+<div class="headd2">
+    <div class="tittl">Home</div>
+    <div class="tittl">Youtube</div>
+</div>
+
+<div class="headd">
+    <span class="colo" id="grey"></span>
+    <span class="colo" id="pink"></span>
+    <span class="colo" id="green"></span>
+    <span class="colo" id="blue"></span>
+</div>
+<b style="text-align: center;margin: 5px;">COLOR Scheme Switcher</b>
+<b style="text-align: center;margin: 20px;">Click the colored box to change the background of the </br>PAGE</b>
+</div>
+</body>
+<script>
+    const b=document.querySelectorAll('.colo');
+    const body=document.querySelector('body');
+    b.forEach(function (button){
+       // console.log(button);
+        button.addEventListener('click',function(e){
+         console.log(e);
+        // console.log(e.target);
+         if(e.target.id==='grey'){
+            document.body.style.backgroundColor='#414141';
+         }else if(e.target.id==='pink'){
+            document.body.style.backgroundColor='pink';
+         }
+         else if(e.target.id==='green'){
+            document.body.style.backgroundColor='lightgreen';
+         }
+         else{
+            document.body.style.backgroundColor='lightblue';
+         }
+        })
+    })
+</script>
+</html>

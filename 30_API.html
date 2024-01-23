@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API(Application Programming Interface)</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .frame{
+            background-color: rgb(216, 216, 216);
+            width: 500px;
+            font-family: sans-serif;
+            font-size: 15px;
+            font-weight: bold;
+            display: flex;
+            flex-direction: row;
+        }
+        img{
+            width: 200px;
+            margin: 10px;
+            border-radius: 5px;
+        }
+        span{
+            color: rgb(0, 60, 255);
+        }
+        p{
+            margin:10px
+        }
+        section{
+            margin: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="frame">
+        <div>
+        <img src="" alt="NOT_FOUND"/>
+        <section id="name">Name :- <span id="NameData"></span></section>
+        <section id="followers">Followers :- <span id="followersData"></span></section>
+    </div>
+    <div><p></p></div>
+    </div>
+</body>
+<script>
+    const url='https://api.github.com/users/hiteshchoudhary';
+    const xhr=new XMLHttpRequest();
+    xhr.open('GET',url);
+    xhr.onreadystatechange=function(){
+        console.log(xhr.readyState);
+        if(xhr.readyState===4){
+            console.log(this.responseText);
+            const res=JSON.parse(this.responseText);
+               document.getElementById('NameData').innerText=res.name;
+               document.getElementById('followersData').innerText=res.followers;
+               document.querySelector('img').src=res.avatar_url;
+               document.querySelector('p').innerText=res.bio;
+        }
+    }
+    xhr.send();
+</script>
+</html>

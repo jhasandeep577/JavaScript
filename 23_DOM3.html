@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DocumentObjectModel</title>
+</head>
+<body>
+    <div id='parent'style="background-color: black;color:white;text-align: center;padding: 50px;">
+    <div class="lang">
+        JavaScript
+    </div>
+</div>
+</body>
+<script>
+    document.body.style.backgroundColor='#414141';
+    // ---------- Creating Element
+    function addLang(language,colorr){
+     const li= document.createElement('div');
+     li.innerHTML=language;
+     li.style.color=colorr;
+     document.querySelector('#parent').appendChild(li);
+    }
+    addLang('Python','lightgreen');
+    addLang('Java','Orange');
+
+    //---Efficient Way
+    function addlang(language,colorr){
+        let ele=document.createElement('div');
+       
+        ele.setAttribute('style','color:'+`${colorr}`);
+        ele.appendChild(document.createTextNode(language));
+        document.querySelector('#parent').appendChild(ele);
+    }
+    addlang('C','lightblue');
+    addlang('C++','lightblue');
+
+    //---EDIT
+    function editlang(language,colorr){  
+      let ele=document.querySelector('div:nth-child(4)');
+    // let ele=document.querySelector('div:first-child');
+     ele.innerHTML=language;
+     ele.style.color=colorr;
+    }
+    editlang('Ruby','pink');
+
+   function editLang(languagae,colorr){   // much optimized way to edit
+       const ele=document.querySelector('div:nth-child(2)');
+       let newele=document.createElement('div');
+       newele.textContent=languagae;
+       newele.setAttribute('style','color:'+`${colorr}`);
+       ele.replaceWith(newele);
+   }
+   editLang('MongoDB','lightgreen');
+
+   // ----------- deleting element
+
+   (function remove(){
+    const ele=document.querySelector('div:last-child');
+    ele.remove();
+   }
+   )();
+   
+</script>
+</html>

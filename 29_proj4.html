@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Key</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        table{
+            border-collapse: collapse;
+            border: solid 1px rgb(124, 124, 124);
+            color: lightblue;
+        }th{
+            background-color: aliceblue;
+            color:black;
+            border: solid 1px rgb(124, 124, 124);
+        }
+        tr{
+            border: solid 1px rgb(124, 124, 124);
+        }td{
+            border: solid 1px rgb(124, 124, 124);
+        }
+    </style>
+</head>
+<body style="background-color: #414141;">
+    
+</body>
+<script>
+    window.addEventListener('keydown',e=>{
+     let tb=document.createElement('table');
+     tb.innerHTML=`<tr><th>Key</th><th>KeyCode</th><th>Code</th></tr><tr><td>${e.key}</td><td>${e.keyCode}</td><td>${e.code}</td></tr>`
+     document.body.appendChild(tb);
+   });
+</script>
+</html>

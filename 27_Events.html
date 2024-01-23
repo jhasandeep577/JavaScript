@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event</title>
+</head>
+<body style="background-color:#414141;color: white;">
+    <h5 style="text-align: center;color: white;">Amazing Images</h5>
+    <ul style="list-style-type: lower-greek;" id="imageList">
+        <li><img src="Image/Insta.png" alt="NOT FOUND" width="200px" id="1"></li>
+        <li><img src="Image/Insta2.png" alt="NOT FOUND" width="200px" id="2"></li>
+        <li><img src="../Insta.png" alt="NOT FOUND" width="200px" id="3"
+             onclick="alert('Nastu DragonDaPuttar')">  <!-- Not a Good uproach due to Scalability-->
+        </li>
+        <li><img src="Image/Insta.png" alt="NOT FOUND" width="200px" id="4"></li>
+        <li><img src="../Insta.png" alt="NOT FOUND" width="200px" id="5"></li>
+    </ul>
+</body>
+<script>
+ document.getElementById('2').onclick=function(){      // Less Features );
+    alert('Levi The BeyBlade');
+ }
+ document.getElementById('1').addEventListener('click',function(e){
+    alert("Tanjiro WaterBoy");
+   
+ });
+ // attachEvent(); early days of JS
+ // jQuery - on method
+ // --- Event Propogation --->
+// document.getElementById('imageList').addEventListener('click', e=>{
+//    console.log("Ul Has been Clicked");
+// },false);     // by default third parameter is false 
+// document.getElementById('4').addEventListener('click',e=>{
+//   console.log('Tanjiro Clicked');
+//   e.stopPropagation();                  // propogation can be stopped using this method
+// })
+// --- Event Capturing ----
+// document.getElementById('imageList').addEventListener('click', e=>{
+//    console.log("Ul Has been Clicked");
+// },true);     // by default third parameter is false 
+// document.getElementById('4').addEventListener('click',e=>{
+//   console.log('Tanjiro Clicked');
+// },true);
+
+// -------Practice
+document.getElementById('imageList').addEventListener('click',e=>{
+   let x=e.target.parentNode;
+   if(x.tagName==='LI'){
+   x.remove();}
+});
+</script>
+</html>

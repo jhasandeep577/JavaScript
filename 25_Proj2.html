@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <style>
+        body{
+            margin:0px;
+            padding:0px;
+            background-color: #ffffff;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        label{
+            display: block;
+            font-size: 12px;
+            margin-bottom: 2px;
+        }
+        #outerdiv{
+            display: flex;
+            justify-content: center;
+            border:solid 1px #c1c1c1;
+            align-items: center;
+            background-color:#c1c1c1;
+            padding: 50px;
+            margin:100px;
+            border-radius: 10px;
+            box-shadow: 20px 20px 40px #000000b6,inset 20px 20px 40px rgba(255, 255, 255, 0.671);
+        }
+        input{
+            padding: 5px 15px 5px 15px;
+            border:solid rgb(255, 68, 0) 1px;
+            border-radius: 3px;
+        }
+        input:focus{
+            border:solid #000000 1px;
+            color:#ff4400;
+            outline: none;
+        }
+        button{
+            color:white;
+            background-color: rgb(255, 68, 0);
+            border: solid #ff4400 1px;
+            padding: 5px 15px 5px 15px;
+            margin-top: 10px;
+            border-radius: 4px;
+        }
+        button:hover{
+            color:#ff4400;
+            background-color: white;
+        }
+        #button{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        input:invalid{
+            border:1px solid red;
+        }
+        input:valid{
+            border: 1px solid green;
+        }
+    </style>
+</head>
+<body> 
+    <div id="outerdiv">
+        <form>
+            <h3 style="text-align: center;color: rgb(255, 72, 0);text-shadow:0px 0px 20px rgba(255, 68, 0, 0.514);">BMI-Calculator</h3>
+            <div class="pid">
+                <label for="height"> Height (in M) :</label>
+                <input type="text" name="height" id="height" required>
+            </div>
+            <div class="pid">
+                <label for="weight"> Weight (in KG) :</label>
+                <input type="text" name="weight" id="weight" maxlength="3" minlength="2" required>
+            </div>
+            <div class="pid" id="button">
+                <button>Submit</button>
+            </div>
+        </form>
+    </div>
+</body>
+<script>
+const frm=document.querySelector('form');
+frm.addEventListener('submit',function(e){
+    e.preventDefault();
+    const h=parseFloat(document.querySelector('#height').value);
+    const w=parseFloat(document.querySelector('#weight').value);
+    let pre=document.querySelector('#newe')
+    if(pre!=null){
+       pre.remove();
+    }
+    const newe=document.createElement('h5');
+    newe.id='newe';
+    newe.style.marginTop='20px';
+    newe.style.textAlign='center';
+    newe.style.color='#FF0800';
+
+    if(h===''||h===0||isNaN(h)){
+        newe.innerHTML='Invalid Height'
+    }else if(w===''||w===0||isNaN(w)){
+        newe.innerHTML='Invalid Weight'
+    }else{
+        let x=(w/(h*h)).toFixed(2);
+        if(x<18.5){
+            newe.innerHTML=`UnderWeight - Your BMI is ${x}`;
+        }else if(x>18.5 && x<24.9){
+            newe.innerHTML=`Normal Weight - Your BMI is ${x}`;
+            newe.style.color="#028A0F";
+        }else{
+            newe.innerHTML=`OverWeight - Your BMI is ${x}`;
+        }
+    }
+    frm.appendChild(newe);
+});
+</script>
+</html>

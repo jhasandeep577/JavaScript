@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asyncronious JavaScript</title>
+    <style>
+        button{
+            display: inline;
+            padding:10px 20px 10px 20px;
+            border-radius: 5px;
+            margin: 200px 200px 200px 200px;
+            border:none;
+        }
+        #start{
+         color: white;
+         background-color: green;
+        }
+        #stop{
+            color: white;
+         background-color: red;
+        }
+        #button{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: row;
+        }
+    </style>
+</head>
+<body style="background-color: #414141;">
+    <h3 style="color: lightseagreen;font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; text-align: center;">Disco Page</h3>
+<div id="#button"><button id="start">Start</button>
+<button id="stop">Stop</button></div>
+
+</body>
+<script>
+   // window.setTimeout(()=>{console.log('Moye Moye...')},3000);
+   // window.setInterval(()=>{console.log('Moye Moye...')},2000);
+   let v;
+   function randomColor(){
+    const hex='0123456789abcdef';
+    let color='#';
+    for(x=0;x<6;x++){
+        color+=hex[Math.floor(Math.random()*16)];
+    }
+    return color;
+   }
+document.getElementById('start').addEventListener('click',e=>{
+    v=setInterval(function(){
+    document.body.style.backgroundColor=randomColor();
+},200)});
+document.getElementById('stop').addEventListener('click',e=>{
+clearInterval(v);
+});
+</script>
+</html>
